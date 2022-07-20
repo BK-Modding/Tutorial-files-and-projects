@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app">
+        <form @submit.prevent="checkForm()">
+            <div>
+                <input type="text" v-model="message">
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        let App = {
+            data() {
+                return {
+                    message: ""
+                };
+            },
+            methods: {
+                checkForm() {
+                    if(this.message) {
+                        // submit();
+                    } else {
+                        alert('Supply Value');
+                    }
+                }
+            }
+        };
+ 
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+</html>

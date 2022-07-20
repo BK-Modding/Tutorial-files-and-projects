@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="counter-app">
+        <div>
+            Counter: {{ count }}
+        </div>
+        <div>
+            <button v-on:click = "start()">Start</button>
+            <button @click = "stop()">Stop</button>
+        </div>
+    </div>
+    <!-- <script>
+        let count = 0;
+        let interval;
+
+        function render() {
+            document.getElementById("countUI").innerText = count;
+        }
+
+        window.onload = function () {
+            render();
+        };
+
+        function start() {
+            interval = setInterval(function() {count++; render();}, 1000);
+        }
+
+        function stop() {
+            if(interval)
+                clearInterval(interval);
+            render();
+        }
+    </script>
+    <div>
+        Count: <span id = "countUI"></span>
+
+        <br>
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
+    </div> -->
+
+
+    <script>
+        let CounterApp = {
+            data() {
+                return {
+                    count: 0,
+                    handle: null
+                };
+            },
+            methods: {
+                clear() {
+                    this.count = 0;
+                },
+                start() {
+                    this.clear();
+                    this.handle = setInterval(() => { this.count++ }, 1000);
+                },
+                stop() {
+                    clearInterval(this.handle);
+                }
+            }
+        };
+
+        Vue.createApp(CounterApp).mount("#counter-app");
+    </script>
+</body>
+</html>

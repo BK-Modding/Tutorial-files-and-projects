@@ -1,0 +1,23 @@
+{
+  "name": "shoppinglist",
+  "productName": "shoppingList",
+  "version": "1.0.0",
+  "description": "Shopping list desktop application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "nodemon": "nodemon --watch . --exec electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . shoppingList --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"ShoppingList\"",
+    "package-linux": "electron-packager . shoppingList --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
+  },
+  "author": "BK-Modding",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^19.0.8"
+  },
+  "devDependencies": {
+    "electron-packager": "^15.5.1",
+    "nodemon": "^2.0.19"
+  }
+}

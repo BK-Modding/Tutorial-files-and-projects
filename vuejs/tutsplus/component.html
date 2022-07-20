@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app">
+        <div>
+            <list :items="guitars"></list>
+        </div>
+       <div>
+            <list :items="fruits"></list>
+       </div>
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    guitars: [  
+                        'Gibson Les Paul',
+                        'Fender Strat',
+                        'Gibson Explorer',
+                        'PRS Vela',
+                        'PRS Starla'
+                    ],
+                    fruits: [
+                        'apple',
+                        'orange',
+                        'banana'
+                    ]
+                }
+            }
+        });
+
+        app.component('guitar-list', {
+            template: `<ul>
+                            <li 
+                                v-for="(guitar, index) in guitars" 
+                                :key="index"
+                            >{{ index + 1 }}: {{ guitar }}</li>
+                        </ul>`,
+            data() {
+                return {
+                    guitars: [
+                        'Gibson Les Paul',
+                        'Fender Strat',
+                        'Gibson Explorer',
+                        'PRS Vela',
+                        'PRS Starla'
+                    ]
+                }
+            }
+        });
+
+        app.component('list', {
+            props: ['items'],
+            template: `<ul>
+                            <li 
+                                v-for="(item, index) in items" 
+                                :key="index"
+                            >{{ index + 1 }}: {{ item }}</li>
+                        </ul>`,
+        })
+        
+        app.mount('#app');
+    </script>
+</body>
+</html>
